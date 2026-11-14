@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#35105f">
+  <meta name="description" content="Informação, acolhimento e orientação sobre violência doméstica, direitos e canais de ajuda no Brasil.">
+  <title>Juntas — Informação e apoio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #27133f;
+      --muted: #685c78;
+      --purple: #471779;
+      --deep: #2b0d49;
+      --pink: #e83d9a;
+      --lilac: #f4edfb;
+      --line: #e9e0f0;
+      --white: #fff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fcfaff; line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #ff8ac5; outline-offset: 3px; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+
+    .topbar { background: var(--white); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; color: var(--purple); line-height: 1.15; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50% 50% 50% 10%; transform: rotate(-45deg); background: var(--pink); color: white; font-size: 23px; }
+    .brand-mark span { transform: rotate(45deg); }
+    .brand small { display: block; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .02em; }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { text-decoration: none; font-size: 14px; font-weight: 650; }
+    .nav-links a:hover { color: var(--pink); }
+    .nav-links .nav-help { color: white; background: var(--purple); padding: 10px 16px; border-radius: 999px; }
+    .nav-links .nav-help:hover { color: white; background: var(--pink); }
+
+    .hero { overflow: hidden; position: relative; color: white; background: radial-gradient(ellipse at 82% 45%, #682b8f 0, transparent 37%), linear-gradient(115deg, #281044, #411365 58%, #24103d); }
+    .hero::after { content: ""; position: absolute; width: 410px; height: 410px; right: 7%; top: -225px; border: 1px solid #ffffff20; border-radius: 50%; box-shadow: 0 0 0 35px #ffffff08, 0 0 0 75px #ffffff06; }
+    .hero-inner { min-height: 410px; padding-block: 70px; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 30px; position: relative; z-index: 1; }
+    .eyebrow { margin: 0 0 12px; color: #ff9dd0; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { max-width: 620px; margin: 0; font-size: clamp(32px, 10vw, 44px); line-height: 1.05; letter-spacing: -.04em; }
+    h1 em { color: #ff61ae; font-style: normal; }
+    .hero-copy { max-width: 510px; margin: 20px 0 25px; color: #eee5f7; font-size: 17px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 19px; border: 0; border-radius: 999px; background: var(--pink); color: white; text-decoration: none; font: inherit; font-size: 14px; font-weight: 750; cursor: pointer; transition: transform .18s, background .18s; }
+    .button:hover { background: #d82c88; transform: translateY(-2px); }
+    .hero-note { display: block; margin-top: 12px; color: #d7c6e8; font-size: 12px; }
+    .hero-art { min-height: 260px; position: relative; display: grid; place-items: center; }
+    .art-orbit { width: min(310px, 90%); aspect-ratio: 1; display: grid; place-items: center; border: 1px solid #ffffff35; border-radius: 50%; background: #ffffff08; box-shadow: 0 0 0 24px #ffffff08, 0 0 0 48px #ffffff05; }
+    .art-center { width: 77%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(145deg, #73349a, #32104f); }
+    .hand { font-size: clamp(90px, 13vw, 145px); line-height: 1; filter: drop-shadow(0 10px 16px #17052670); }
+    .stop-word { position: absolute; top: 57%; left: 50%; transform: translate(-50%, -50%) rotate(-12deg); color: white; font-size: 14px; font-weight: 900; letter-spacing: .12em; text-shadow: 0 2px 6px #160522; }
+
+    .quick { position: relative; z-index: 2; margin-top: -1px; background: white; box-shadow: 0 12px 30px #2b0d4910; }
+    .quick-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .quick-card { display: flex; min-height: 130px; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 20px 14px; text-align: center; text-decoration: none; border-right: 1px solid var(--line); }
+    .quick-card:last-child { border-right: 0; }
+    .quick-icon { color: var(--pink); font-size: 28px; line-height: 1.2; }
+    .quick-card strong { font-size: 15px; }
+    .quick-card span:last-child { color: var(--muted); font-size: 12px; }
+    .quick-card:hover { background: #fcf7ff; }
+
+    section.content { padding: 74px 0; scroll-margin-top: 24px; }
+    .section-heading { max-width: 690px; margin: 0 auto 34px; text-align: center; }
+    .section-heading h2 { margin: 0 0 10px; font-size: clamp(27px, 3.5vw, 38px); line-height: 1.2; letter-spacing: -.025em; }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .info-card { padding: 23px; border: 1px solid var(--line); border-radius: 17px; background: white; box-shadow: 0 7px 22px #30134a08; }
+    .info-card .symbol { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 13px; border-radius: 13px; background: var(--lilac); color: var(--purple); font-size: 21px; }
+    .info-card h3 { margin: 0 0 7px; font-size: 17px; }
+    .info-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .notice { margin-top: 24px; padding: 17px 20px; border-left: 4px solid var(--pink); border-radius: 0 12px 12px 0; background: #fff1f8; color: #55304b; font-size: 14px; }
+    .notice strong { color: #3e174c; }
+    .tint { background: var(--lilac); }
+    .rights-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: 42px; }
+    .rights-intro h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 39px); line-height: 1.15; }
+    .rights-intro p { margin: 0 0 16px; color: var(--muted); }
+    .rights-list { margin: 0; padding: 0; list-style: none; }
+    .rights-list li { position: relative; margin: 0 0 13px; padding: 15px 17px 15px 48px; border: 1px solid #e6d9f0; border-radius: 13px; background: white; }
+    .rights-list li::before { content: "✓"; position: absolute; left: 17px; top: 14px; color: var(--pink); font-weight: 900; }
+    .rights-list strong { display: block; margin-bottom: 2px; }
+    .rights-list span { color: var(--muted); font-size: 13px; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; counter-reset: step; }
+    .step { padding: 23px; border-radius: 16px; background: white; border: 1px solid var(--line); }
+    .step::before { counter-increment: step; content: "0" counter(step); display: block; margin-bottom: 14px; color: var(--pink); font-size: 23px; font-weight: 850; }
+    .step h3 { margin: 0 0 7px; font-size: 17px; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+    .emergency-banner { margin-top: 25px; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-radius: 16px; color: white; background: linear-gradient(110deg, #38105b, #5c1e7a); }
+    .emergency-banner h3 { margin: 0 0 4px; }
+    .emergency-banner p { margin: 0; color: #eadcf3; font-size: 14px; }
+    .emergency-banner .button { flex: 0 0 auto; background: white; color: var(--purple); }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .contact-card { display: flex; min-width: 0; align-items: flex-start; gap: 17px; padding: 23px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+    .contact-number { min-width: 76px; color: var(--pink); font-size: 27px; font-weight: 850; line-height: 1.2; }
+    .contact-card > div:last-child { min-width: 0; }
+    .contact-card h3 { margin: 0 0 5px; font-size: 17px; }
+    .contact-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .contact-card a { color: var(--purple); font-weight: 700; }
+    .sources { margin: 24px auto 0; max-width: 800px; color: var(--muted); text-align: center; font-size: 12px; }
+    .sources a { color: var(--purple); }
+    .quote { padding: 38px 0; background: linear-gradient(105deg, #45156f, #2d104b); color: white; }
+    .quote-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .quote blockquote { margin: 0; font-size: clamp(22px, 3vw, 31px); font-weight: 750; letter-spacing: -.02em; }
+    .quote p { max-width: 280px; margin: 0; color: #e5d7f0; font-size: 14px; }
+    footer { padding: 25px 0; color: var(--muted); background: white; font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, 560px); }
+      .nav { min-height: 66px; flex-wrap: wrap; padding-block: 12px; }
+      .nav-links { width: 100%; gap: 14px; overflow-x: auto; padding: 2px 0 5px; }
+      .nav-links a { white-space: nowrap; font-size: 13px; }
+      .nav-links .nav-help { padding: 7px 12px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; padding-block: 52px 38px; }
+      .hero-art { min-height: 230px; }
+      .art-orbit { width: 205px; }
+      .hand { font-size: 100px; }
+      .quick-grid { grid-template-columns: repeat(2, 1fr); }
+      .quick-card { min-height: 112px; border-bottom: 1px solid var(--line); }
+      .quick-card:nth-child(2) { border-right: 0; }
+      .quick-card:nth-child(n+3) { border-bottom: 0; }
+      section.content { padding: 56px 0; }
+      .cards, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .rights-grid { grid-template-columns: 1fr; gap: 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .emergency-banner, .quote-inner, .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 520px) {
+      .cards, .steps { grid-template-columns: 1fr; }
+      .contact-card { gap: 12px; padding: 18px; }
+      .contact-number { min-width: 60px; font-size: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="Juntas, início">
+        <span class="brand-mark" aria-hidden="true"><span>♀</span></span>
+        <span>Juntas<small>Somos mais fortes</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#inicio">Início</a>
+        <a href="#violencia">Tipos de violência</a>
+        <a href="#direitos">Seus direitos</a>
+        <a class="nav-help" href="#ajuda">Onde buscar ajuda</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner wrap">
+        <div>
+          <p class="eyebrow">Informação também é proteção</p>
+          <h1>Violência doméstica<br><em>não é amor. É crime.</em></h1>
+          <p class="hero-copy">Você merece viver com segurança e respeito. Conheça os sinais, seus direitos e onde encontrar apoio.</p>
+          <a class="button" href="#violencia">Saiba mais</a>
+          <span class="hero-note">Você não está sozinha. Pedir ajuda é um direito.</span>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit"><div class="art-center"><span class="hand">✋</span><span class="stop-word">BASTA</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quick" aria-label="Acesso rápido">
+      <div class="quick-grid wrap">
+        <a class="quick-card" href="#violencia"><span class="quick-icon" aria-hidden="true">◉</span><strong>Tipos de violência</strong><span>Conheça e identifique</span></a>
+        <a class="quick-card" href="#protecao"><span class="quick-icon" aria-hidden="true">♥</span><strong>Como pedir ajuda</strong><span>Você não está sozinha</span></a>
+        <a class="quick-card" href="#ajuda"><span class="quick-icon" aria-hidden="true">☎</span><strong>Disque 180</strong><span>Central de Atendimento à Mulher</span></a>
+        <a class="quick-card" href="#direitos"><span class="quick-icon" aria-hidden="true">▤</span><strong>Seus direitos</strong><span>Conheça as proteções previstas em lei</span></a>
+      </div>
+    </div>
+
+    <section class="content" id="violencia">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Reconhecer é o primeiro passo</p>
+          <h2>Violência não é só agressão física</h2>
+          <p>A Lei Maria da Penha reconhece diferentes formas de violência doméstica e familiar contra a mulher. Nenhuma delas é culpa de quem sofre.</p>
+        </div>
+        <div class="cards">
+          <article class="info-card"><span class="symbol" aria-hidden="true">✦</span><h3>Física</h3><p>Empurrões, tapas, socos, chutes, queimaduras ou qualquer conduta que machuque o corpo.</p></article>
+          <article class="info-card"><span class="symbol" aria-hidden="true">♡</span><h3>Psicológica</h3><p>Ameaças, humilhações, controle, isolamento, perseguição ou atitudes que causem medo e abalem a autoestima.</p></article>
+          <article class="info-card"><span class="symbol" aria-hidden="true">◌</span><h3>Sexual</h3><p>Forçar relações ou atos sexuais, impedir o uso de contraceptivos ou desrespeitar o direito de decidir sobre o próprio corpo.</p></article>
+          <article class="info-card"><span class="symbol" aria-hidden="true">◇</span><h3>Patrimonial</h3><p>Reter ou destruir documentos, dinheiro, objetos, instrumentos de trabalho ou outros bens.</p></article>
+          <article class="info-card"><span class="symbol" aria-hidden="true">≋</span><h3>Moral</h3><p>Calúnia, difamação ou injúria, como espalhar mentiras ou ofender a dignidade.</p></article>
+          <article class="info-card"><span class="symbol" aria-hidden="true">!</span><h3>Fique atenta</h3><p>Ciúme não é justificativa para controlar sua vida. A violência pode acontecer em relações atuais ou passadas.</p></article>
+        </div>
+        <div class="notice"><strong>Importante:</strong> você não precisa ter certeza sobre o nome da violência para buscar orientação ou apoio. Conte o que está acontecendo a um serviço de confiança.</div>
+      </div>
+    </section>
+
+    <section class="content tint" id="direitos">
+      <div class="wrap rights-grid">
+        <div class="rights-intro">
+          <p class="eyebrow">Lei Maria da Penha · Lei nº 11.340/2006</p>
+          <h2>Você tem direito à proteção e ao acolhimento</h2>
+          <p>A lei prevê medidas para prevenir e interromper a violência, além de atendimento respeitoso e acesso à Justiça. Você pode pedir orientação mesmo que ainda não saiba o que fazer.</p>
+          <a class="button" href="#ajuda">Encontre um canal de ajuda</a>
+        </div>
+        <ul class="rights-list">
+          <li><strong>Medidas protetivas de urgência</strong><span>Podem incluir o afastamento do agressor e a proibição de contato ou aproximação, conforme decisão da Justiça.</span></li>
+          <li><strong>Atendimento sem julgamento</strong><span>Procure uma Delegacia da Mulher ou outra unidade policial, serviço de saúde, Defensoria Pública ou assistência social.</span></li>
+          <li><strong>Orientação jurídica</strong><span>A Defensoria Pública pode informar sobre seus direitos e os caminhos disponíveis na sua região.</span></li>
+          <li><strong>Proteção de crianças e dependentes</strong><span>Ao buscar atendimento, informe se há crianças ou outras pessoas em risco para que a equipe avalie o apoio necessário.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content" id="protecao">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Um passo de cada vez</p>
+          <h2>Se estiver em uma situação de violência</h2>
+          <p>Você decide o que é mais seguro para você. Não precisa enfrentar isso sozinha.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Priorize sua segurança</h3><p>Se houver perigo imediato, vá para um local seguro se puder. Não confronte a pessoa agressora se isso aumentar o risco.</p></article>
+          <article class="step"><h3>Converse com alguém de confiança</h3><p>Conte a uma pessoa próxima e combine uma palavra-código ou um plano para pedir ajuda, se isso for seguro.</p></article>
+          <article class="step"><h3>Busque orientação</h3><p>Ligue para o 180 ou procure serviços locais. Se puder fazê-lo com segurança, guarde mensagens ou registros que ajudem a explicar o que ocorre.</p></article>
+        </div>
+        <div class="emergency-banner">
+          <div><h3>Está em perigo agora?</h3><p>Afaste-se do risco se possível e ligue para a Polícia Militar pelo 190.</p></div>
+          <a class="button" href="tel:190" aria-label="Ligar para a Polícia Militar, número 190">Ligar 190</a>
+        </div>
+        <div class="notice"><strong>Cuide da sua privacidade:</strong> se seu celular ou computador for monitorado, procure ajuda usando um aparelho seguro, se possível. Sair desta página não apaga o histórico do navegador.</div>
+      </div>
+    </section>
+
+    <section class="content tint" id="ajuda">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Canais de ajuda no Brasil</p>
+          <h2>Você pode pedir ajuda</h2>
+          <p>Os serviços podem orientar sobre os próximos passos e indicar atendimento disponível na sua região.</p>
+        </div>
+        <div class="contact-grid">
+          <article class="contact-card">
+            <div class="contact-number">180</div>
+            <div><h3>Central de Atendimento à Mulher</h3><p>Canal gratuito, disponível 24 horas por dia, todos os dias. Oferece orientação e recebe denúncias. <a href="tel:180">Ligar para 180</a>.</p></div>
+          </article>
+          <article class="contact-card">
+            <div class="contact-number">190</div>
+            <div><h3>Polícia Militar</h3><p>Use em situações de emergência ou perigo imediato. Se puder, informe seu endereço e o que está acontecendo. <a href="tel:190">Ligar para 190</a>.</p></div>
+          </article>
+          <article class="contact-card">
+            <div class="contact-number">Local</div>
+            <div><h3>Serviços especializados</h3><p>Delegacias da Mulher, Centros de Referência, Casas da Mulher Brasileira e serviços municipais podem oferecer acolhimento e encaminhamentos.</p></div>
+          </article>
+          <article class="contact-card">
+            <div class="contact-number">Justiça</div>
+            <div><h3>Defensoria Pública</h3><p>Procure a unidade do seu estado para orientação jurídica gratuita e informação sobre serviços e medidas de proteção.</p></div>
+          </article>
+        </div>
+        <p class="sources">Informações gerais: <a href="https://www.gov.br/mulheres/pt-br/ligue-180" target="_blank" rel="noopener noreferrer">Ligue 180 — Ministério das Mulheres</a> · <a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm" target="_blank" rel="noopener noreferrer">Lei Maria da Penha</a>. Os serviços e horários presenciais variam por município.</p>
+      </div>
+    </section>
+
+    <section class="quote" aria-label="Mensagem de apoio">
+      <div class="quote-inner wrap">
+        <blockquote>“Respeito transforma vidas.”</blockquote>
+        <p>Informar também é uma forma de proteger. Compartilhe esta página com cuidado e respeito.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap">
+      <span>Juntas — Informação, apoio e respeito.</span>
+      <span>Este conteúdo é informativo e não substitui atendimento especializado.</span>
+    </div>
+  </footer>
+</body>
+</html>
